@@ -7,19 +7,17 @@ PRIMARY KEY (`id`)
 );
 
 CREATE TABLE IF NOT EXISTS `roles`(
-  `id` int(11) NOT NULL,
-  `role` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `role` varchar(255) DEFAULT NULL
 );
 
 DELETE FROM roles;
 
-INSERT INTO roles (`id`, `role`) VALUE (1, 'manager');
-INSERT INTO roles (`id`, `role`) VALUE (2, 'customer');
+INSERT INTO roles (`role`) VALUE ('MANAGER');
+INSERT INTO roles (`role`) VALUE ('CUSTOMER');
 
-#создает стандартного пользователя, если в таблице пользователей его нет
+
 INSERT INTO users (login, pass, id_role)
-  SELECT * FROM (SELECT 'admin', 'adm',1) AS tmp
+  SELECT * FROM (SELECT 'admin', 'adm', 1) AS tmp
   WHERE NOT EXISTS (
       SELECT login, pass FROM users WHERE login = 'admin' AND pass = 'adm'
   ) LIMIT 1;
