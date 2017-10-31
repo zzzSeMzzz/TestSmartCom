@@ -32,11 +32,9 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User login(String login, String password) {
-       /* String q = "SELECT u FROM User u WHERE u.login = :login AND u.password = :password";
-        List<User> users =
-        sessionFactory.getCurrentSession().createNamedQuery(q).setParameter("login", login)
+        String q = "SELECT u FROM User u WHERE u.login = :login AND u.pass = :password";
+        List<User> users = em.createQuery(q).setParameter("login", login)
                 .setParameter("password", password).getResultList();
-        return DataAccessUtils.singleResult(users);*/
-        return null;
+        return DataAccessUtils.singleResult(users);
     }
 }

@@ -10,5 +10,5 @@ public interface UserService {
 
     User get(int id) throws NotFoundException;
 
-    User get(String login, String password) throws NotFoundException;
+    User login(User user) throws NotFoundException;
 }

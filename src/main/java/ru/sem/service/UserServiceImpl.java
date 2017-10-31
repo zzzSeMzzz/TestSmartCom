@@ -23,9 +23,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User get(String login, String password) throws NotFoundException {
-        User u = repository.login(login, password);
-        if(u==null) throw  new NotFoundException("Пользователь с таким логином/паролем не найден");
+    public User login(User user) throws NotFoundException {
+        User u = repository.login(user.getLogin(), user.getPass());
+        if(u==null) throw new NotFoundException("Пользователь с таким логином/паролем не найден");
         else return u;
     }
 }

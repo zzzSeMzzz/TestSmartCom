@@ -5,7 +5,7 @@ package ru.sem.model;
 /**
  * Created by Admin on 30.10.2017.
  */
-public abstract class BaseResponse {
+public class BaseResponse {
 
 
     private boolean success;

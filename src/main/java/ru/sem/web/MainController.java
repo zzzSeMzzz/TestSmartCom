@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import ru.sem.exceptions.NotFoundException;
+import ru.sem.model.BaseResponse;
 import ru.sem.model.User;
 import ru.sem.service.UserService;
 
@@ -33,12 +35,19 @@ public class MainController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST, produces="application/json")
-    public @ResponseBody User login(@RequestBody User data){
+    public @ResponseBody BaseResponse login(@RequestBody User data){
         log.info("try login with data "+data);
-        User ts = service.get(1);
-       /* User user = new User();
-        user.setSuccess(false);
-        user.setMessage("this is message");*/
-        return ts;
+        BaseResponse response = new BaseResponse();
+        try {
+            User ts = service.login(data);
+            log.info("user="+ts);
+            response.setSuccess(true);
+            response.setMessage("success");
+            return response;
+        }catch (NotFoundException e){
+            response.setMessage(e.getMessage());
+            response.setSuccess(false);
+            return response;
+        }
     }
 }
