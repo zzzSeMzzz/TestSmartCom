@@ -4,9 +4,10 @@ Ext.onReady(function(){
         title: 'Авторизация',
         width: 300,
         height:150,
+        url:'j_spring_security_check',
         bodyPadding:10,
         layout: 'anchor',
-        jsonSubmit: true,
+        jsonSubmit: false,
         defaults: {
             anchor: '80%'
         },
@@ -14,35 +15,36 @@ Ext.onReady(function(){
         items: [{
             xtype: 'textfield',
             fieldLabel: 'Логин',
-            name: 'login'
+            name: 'username'
         },
             {
                 xtype: 'textfield',
-                name: 'pass',
+                name: 'password',
                 fieldLabel: 'Пароль',
                 inputType: 'password'
             }],
         buttons: [{
             text: 'Оправить',
-
+            method: 'post',
             handler: function() {
-                loginForm.getForm().submit({
-                    headers: {
-                        'Content-Type': 'application/json;charset=utf-8'
-                    },
-                    url: 'login',
-                    success: function(form, action){
-                        Ext.MessageBox.alert('Авторизация пройдена.',action.result.message);
-                    },
-                    failure: function(form, action){
-                        Ext.MessageBox.alert('Ошибка авторизации.', action.result.message);
-                    }
-                });
+                fnLoginForm(loginForm);
             }
         }]
     });
 
     loginForm.getEl().center();
+
+    //Submit login and handler response
+    function fnLoginForm(theForm) {
+        theForm.getForm().submit({
+            success: function(form, action) {
+                Ext.MessageBox.alert('Авторизация пройдена.',action.result.message);
+            },
+            failure: function(form, action) {
+                Ext.MessageBox.alert('Ошибка авторизации.', action.result.message);
+            }
+        });
+    } //end fnLoginForm
 
 });
 

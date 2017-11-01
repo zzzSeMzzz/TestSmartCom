@@ -34,7 +34,7 @@ public class MainController {
         return "index";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST, produces="application/json")
+    /*@RequestMapping(value = "/login", method = RequestMethod.POST, produces="application/json")
     public @ResponseBody BaseResponse login(@RequestBody User data){
         log.info("try login with data "+data);
         BaseResponse response = new BaseResponse();
@@ -49,5 +49,11 @@ public class MainController {
             response.setSuccess(false);
             return response;
         }
+    }*/
+
+    @RequestMapping(value = "/login.do", method=RequestMethod.GET)
+    public String login(){
+        return "index";
     }
+
 }

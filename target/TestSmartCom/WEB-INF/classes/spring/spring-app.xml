@@ -10,5 +10,7 @@
 
     <context:component-scan base-package="ru.sem.**.service"/>
 
+    <import resource="spring-security.xml"/>
+
 
 </beans>

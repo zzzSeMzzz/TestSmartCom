@@ -13,7 +13,7 @@
     </appender>
 
     <logger name="ru.sem" level="debug"/>
-    <logger name="org.springframework.web.servlet" level="debug"/>
+    <logger name="org.springframework.web.servlet" level="debug" additivity="true"/>
 
     <root level="info">
         <appender-ref ref="file"/>

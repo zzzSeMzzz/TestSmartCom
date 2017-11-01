@@ -17,7 +17,7 @@ INSERT INTO roles (`role`) VALUE ('CUSTOMER');
 
 
 INSERT INTO users (login, pass, id_role)
-  SELECT * FROM (SELECT 'admin', 'adm', 1) AS tmp
+  SELECT * FROM (SELECT 'admin', 'adm', 0) AS tmp
   WHERE NOT EXISTS (
       SELECT login, pass FROM users WHERE login = 'admin' AND pass = 'adm'
   ) LIMIT 1;
