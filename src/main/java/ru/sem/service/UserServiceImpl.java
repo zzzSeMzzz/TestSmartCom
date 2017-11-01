@@ -28,4 +28,9 @@ public class UserServiceImpl implements UserService {
         if(u==null) throw new NotFoundException("Пользователь с таким логином/паролем не найден");
         else return u;
     }
+
+    @Override
+    public User getDataByUserName(String name) {
+        return repository.getByName(name);
+    }
 }

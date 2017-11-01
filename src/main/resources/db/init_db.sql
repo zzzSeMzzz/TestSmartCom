@@ -12,8 +12,8 @@ CREATE TABLE IF NOT EXISTS `roles`(
 
 DELETE FROM roles;
 
-INSERT INTO roles (`role`) VALUE ('MANAGER');
-INSERT INTO roles (`role`) VALUE ('CUSTOMER');
+INSERT INTO roles (`role`) VALUE ('ROLE_MANAGER');
+INSERT INTO roles (`role`) VALUE ('ROLE_CUSTOMER');
 
 
 INSERT INTO users (login, pass, id_role)

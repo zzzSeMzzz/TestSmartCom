@@ -11,7 +11,7 @@
 
     <http pattern="/resources/**" security="none"/>
 
-
+    <global-method-security secured-annotations="enabled" />
 
     <http use-expressions="true"  create-session="stateless" disable-url-rewriting="true"
           auto-config="false" >
@@ -33,19 +33,15 @@
 
 
     <authentication-manager alias="authenticationManager">
+        <authentication-provider user-service-ref="dbUserDetailsService"/>
 
-        <authentication-provider>
-            <user-service>
-                <user name="adm" password="adm" authorities="ROLE_MANAGER" />
-                <user name="test" password="test" authorities="ROLE_USER" />
-            </user-service>
-        </authentication-provider>
     </authentication-manager>
 
 
     <beans:bean id="loginSuccessHandler" class="ru.sem.web.LoginSuccessHandler" />
     <beans:bean id="loginFailureHandler" class="ru.sem.web.LoginFailureHandler" />
     <beans:bean id="customAuthProvider" class="ru.sem.web.CustomAuthenticationProvider" />
+    <beans:bean name="dbUserDetailsService" class="ru.sem.service.DbUserDetailsService"/>
 
 
 </beans:beans>

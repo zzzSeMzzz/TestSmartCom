@@ -1,9 +1,7 @@
 package ru.sem.repository;
 
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.dao.support.DataAccessUtils;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import ru.sem.model.User;
@@ -35,6 +33,14 @@ public class UserRepositoryImpl implements UserRepository {
         String q = "SELECT u FROM User u WHERE u.login = :login AND u.pass = :password";
         List<User> users = em.createQuery(q).setParameter("login", login)
                 .setParameter("password", password).getResultList();
+        return DataAccessUtils.singleResult(users);
+    }
+
+    @Override
+    public User getByName(String name) {
+        String q = "SELECT u FROM User u WHERE u.login = :login";
+        List<User> users = em.createQuery(q).setParameter("login", name)
+                .getResultList();
         return DataAccessUtils.singleResult(users);
     }
 }

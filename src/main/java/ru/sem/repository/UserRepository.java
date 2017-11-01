@@ -12,4 +12,6 @@ public interface UserRepository {
     User get(int id);
 
     User login(String login, String password);
+
+    User getByName(String name);
 }

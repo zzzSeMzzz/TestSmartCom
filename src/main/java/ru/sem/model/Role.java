@@ -7,6 +7,6 @@ package ru.sem.model;
  */
 
 public enum Role {
-    MANAGER,
-    CUSTOMER;
+    ROLE_MANAGER,
+    ROLE_CUSTOMER;
 }
