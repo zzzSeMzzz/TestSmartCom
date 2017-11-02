@@ -29,27 +29,11 @@ public class MainController {
     @Autowired
     UserService service;
 
-    @RequestMapping(value="/", method = RequestMethod.GET)
+    @RequestMapping(value="/main/", method = RequestMethod.GET)
     public String start(){
-        return "index";
+        return "main";
     }
 
-    /*@RequestMapping(value = "/login", method = RequestMethod.POST, produces="application/json")
-    public @ResponseBody BaseResponse login(@RequestBody User data){
-        log.info("try login with data "+data);
-        BaseResponse response = new BaseResponse();
-        try {
-            User ts = service.login(data);
-            log.info("user="+ts);
-            response.setSuccess(true);
-            response.setMessage("success");
-            return response;
-        }catch (NotFoundException e){
-            response.setMessage(e.getMessage());
-            response.setSuccess(false);
-            return response;
-        }
-    }*/
 
     @RequestMapping(value = "/login.do", method=RequestMethod.GET)
     public String login(){

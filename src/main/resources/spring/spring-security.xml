@@ -13,12 +13,11 @@
 
     <global-method-security secured-annotations="enabled" />
 
-    <http use-expressions="true"  create-session="stateless" disable-url-rewriting="true"
-          auto-config="false" >
+    <http use-expressions="true"  disable-url-rewriting="true" auto-config="false" >
         <csrf disabled="true"/>
         <intercept-url pattern="/login.do" access="permitAll"/>
-        <intercept-url pattern="/app" access="hasRole('ROLE_USER')"/>
-        <intercept-url pattern="/**" access="isAuthenticated()" />
+        <intercept-url pattern="/main/**" access="hasRole('ROLE_MANAGER')" />
+        <security:intercept-url pattern="/**" access="permitAll" />
         <security:form-login login-page="/login.do"
                     default-target-url="/main"
                     username-parameter="username"
@@ -27,7 +26,7 @@
                     authentication-success-handler-ref="loginSuccessHandler"
                     authentication-failure-handler-ref="loginFailureHandler"
                     authentication-failure-url="/loginerr"/>
-        <logout invalidate-session="true" logout-success-url="/main" logout-url="/j_spring_security_logout"/>
+        <logout invalidate-session="true" logout-success-url="/" logout-url="/j_spring_security_logout"/>
     </http>
 
 
@@ -40,7 +39,9 @@
 
     <beans:bean id="loginSuccessHandler" class="ru.sem.web.LoginSuccessHandler" />
     <beans:bean id="loginFailureHandler" class="ru.sem.web.LoginFailureHandler" />
+    <!--
     <beans:bean id="customAuthProvider" class="ru.sem.web.CustomAuthenticationProvider" />
+    -->
     <beans:bean name="dbUserDetailsService" class="ru.sem.service.DbUserDetailsService"/>
 
 

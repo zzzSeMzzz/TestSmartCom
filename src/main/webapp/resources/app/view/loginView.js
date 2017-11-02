@@ -39,6 +39,7 @@ Ext.onReady(function(){
         theForm.getForm().submit({
             success: function(form, action) {
                 Ext.MessageBox.alert('Авторизация пройдена.',action.result.message);
+                window.location.replace('/main/');
             },
             failure: function(form, action) {
                 Ext.MessageBox.alert('Ошибка авторизации.', action.result.message);
