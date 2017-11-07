@@ -5,9 +5,18 @@ import javax.persistence.*;
 /**
  * Created by Admin on 07.11.2017.
  */
+
+@NamedQueries({
+
+        @NamedQuery(name = Item.DELETE, query = "DELETE FROM Item i WHERE i.id=:id")
+
+})
+
 @Entity
 @Table(name = "item")
 public class Item {
+
+    public static final String DELETE = "Item.delete";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

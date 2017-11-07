@@ -9,7 +9,9 @@ Ext.define('SC.store.ItemStore', {
         type: 'ajax',
         api: {
             read : '/main/getitems',
-            create : '/main/saveitem'
+            create : '/main/saveitem',
+            update : '/main/saveitem',
+            destroy : '/main/delitem'
         },
         reader: {
             type: 'json',

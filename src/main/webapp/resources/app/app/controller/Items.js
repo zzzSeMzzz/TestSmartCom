@@ -8,7 +8,7 @@ Ext.define('SC.controller.Items', {
     stores: ['ItemStore'],
 
     refs: [{
-        ref: 'contactsPanel',
+        ref: 'itemsPanel',
         selector: 'panel'
     },{
         ref: 'itemlist',
@@ -23,22 +23,22 @@ Ext.define('SC.controller.Items', {
 
                 },
                 'itemlist button[action=add]': {
-                    click: this.editUser
+                    click: this.editItem
                 },
                 'itemlist dataview': {
-                    itemdblclick: this.editUser
+                    itemdblclick: this.editItem
                 },
                 'itemedit button[action=save]': {
-                    click: this.updateUser
+                    click: this.updateItem
                 },
                 'itemlist button[action=delete]': {
-
+                    click: this.deleteItem
                 }
             });
         },
-    
 
-    editUser: function(grid, record) {
+
+    editItem: function(grid, record) {
         var edit = Ext.create('SC.view.EditItem').show();
         //console.log(record);
 
@@ -47,13 +47,14 @@ Ext.define('SC.controller.Items', {
         }
     },
 
-    updateUser: function(button) {
+    updateItem: function(button) {
         console.log('update user try');
         var win    = button.up('window'),
             form   = win.down('form'),
             record = form.getRecord(),
             values = form.getValues();
 
+        console.log(values.id);
 
         if (values.id > 0){
             console.log('now update user');
@@ -69,6 +70,15 @@ Ext.define('SC.controller.Items', {
         }
 
         win.close();
+        this.getStore('ItemStore').sync();
+    },
+
+    deleteItem: function(button) {
+        var grid = this.getItemlist(),
+            record = grid.getSelectionModel().getSelection(),
+            store = this.getStore('ItemStore');
+
+        store.remove(record);
         this.getStore('ItemStore').sync();
     }
 });

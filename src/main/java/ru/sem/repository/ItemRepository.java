@@ -12,4 +12,6 @@ public interface ItemRepository {
     List<Item> getAll();
 
     Item save(Item item);
+
+    boolean delete(int id);
 }

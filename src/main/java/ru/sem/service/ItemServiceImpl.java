@@ -25,4 +25,9 @@ public class ItemServiceImpl implements ItemService {
     public Item save(Item item) {
         return repository.save(item);
     }
+
+    @Override
+    public boolean delete(int id) {
+        return repository.delete(id);
+    }
 }

@@ -12,4 +12,6 @@ public interface ItemService {
     List<Item> getAll();
 
     Item save(Item item);
+
+    boolean delete(int id);
 }

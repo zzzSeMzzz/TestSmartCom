@@ -11,6 +11,7 @@ import java.util.List;
  * Created by Admin on 07.11.2017.
  */
 
+
 @Repository
 @Transactional(readOnly = true)
 public class ItemRepositoryImpl implements ItemRepository {
@@ -32,5 +33,13 @@ public class ItemRepositoryImpl implements ItemRepository {
         }else{
             return em.merge(item);
         }
+    }
+
+    @Override
+    @Transactional
+    public boolean delete(int id) {
+        return em.createNamedQuery(Item.DELETE)
+                .setParameter("id", id)
+                .executeUpdate() != 0;
     }
 }

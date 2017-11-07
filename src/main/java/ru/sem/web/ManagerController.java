@@ -41,4 +41,13 @@ public class ManagerController {
         return itemService.save(item);
     }
 
+    @RequestMapping(value = "/main/delitem", method = RequestMethod.POST)
+    @ResponseBody
+    public Boolean deleteItem(@RequestBody Item item){
+        log.info(item.toString());
+        log.info("del item");
+
+        return itemService.delete(item.getId());
+    }
+
 }
