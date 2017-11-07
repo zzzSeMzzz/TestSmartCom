@@ -7,7 +7,7 @@ Ext.onReady(function(){
             {
                 text: 'Управление заказами',
                 handler: function() {
-                    btn1();
+                    btnManageOrders();
                 }
             },'-',
             {
@@ -17,7 +17,16 @@ Ext.onReady(function(){
                 }
             },'-',
             {
-                text : 'Управление пользователями'
+                text: 'Заказчики',
+                handler: function() {
+                    btnManageCustomers();
+                }
+            },'-',
+            {
+                text : 'Управление пользователями',
+                handler: function() {
+                    btnManageUsers();
+                }
             }
         ]
     });
@@ -26,15 +35,23 @@ Ext.onReady(function(){
         items: [ toolBar ]
     });
 
-    function btn1() {
-        Ext.MessageBox.alert('Авторизация пройдена.','dd');
+    function btnManageOrders() {
+        var window = Ext.create('Ext.window.Window', {
+            title: 'Управление заказами',
+            width: Ext.getBody().getViewSize().width*0.75,
+            height: Ext.getBody().getViewSize().width*0.35,
+            items:[{
+                //xtype: 'itemlist'
+            }]
+        });
+        window.show();
     }
 
     function btnManageItems() {
         var window = Ext.create('Ext.window.Window', {
             title: 'Редактирование товаров',
-            width: '80pct',
-            height: 500,
+            width: Ext.getBody().getViewSize().width*0.75,
+            height: Ext.getBody().getViewSize().width*0.35,
             items:[{
                 xtype: 'itemlist'
             }]
@@ -46,5 +63,28 @@ Ext.onReady(function(){
 
     }
 
+    function btnManageCustomers(){
+        var window = Ext.create('Ext.window.Window', {
+            title: 'Управление заказчиками',
+            width: Ext.getBody().getViewSize().width*0.75,
+            height: Ext.getBody().getViewSize().width*0.35,
+            items:[{
+                //xtype: 'itemlist'
+            }]
+        });
+        window.show();
+    }
+
+    function btnManageUsers(){
+        var window = Ext.create('Ext.window.Window', {
+            title: 'Редактирвоание пользователей',
+            width: Ext.getBody().getViewSize().width*0.75,
+            height: Ext.getBody().getViewSize().width*0.35,
+            items:[{
+                //xtype: 'itemlist'
+            }]
+        });
+        window.show();
+    }
 });
 

@@ -19,7 +19,7 @@ import java.util.List;
  */
 @Controller
 public class ManagerController {
-    private static final Logger log = LoggerFactory.getLogger("application");
+    private static final Logger log = LoggerFactory.getLogger("ManagerController");
 
     @Autowired
     ItemService itemService;
