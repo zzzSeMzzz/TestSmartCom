@@ -15,6 +15,26 @@ Ext.define('SC.view.ItemList' ,{
             {header: 'Код', dataIndex: 'code', flex: 1}
         ];
 
+        this.dockedItems = [{
+            xtype: 'toolbar',
+            items: [{
+                itemId: 'add',
+                text: 'Добавить',
+                action: 'add'
+            },{
+                text: 'Удалить',
+                action: 'delete'
+            }]
+        },
+            {
+                xtype: 'pagingtoolbar',
+                dock:'top',
+                store: 'ItemStore',
+                displayInfo: true,
+                displayMsg: 'Список товаров {0} - {1} из {2}',
+                emptyMsg: "Нет товаров для отображения"
+            }];
+
         this.callParent(this.arguments);
     }
 });

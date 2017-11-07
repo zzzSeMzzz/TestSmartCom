@@ -10,8 +10,9 @@ import javax.persistence.*;
 public class Item {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
+    private Integer id;
 
     @Column
     private String code;
@@ -20,16 +21,20 @@ public class Item {
     private String name;
 
     @Column
-    private  int price;
+    private int price;
 
     @Column
     private String category;
 
-    public int getId() {
+    public boolean isNew() {
+        return (getId() == null);
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -63,5 +68,16 @@ public class Item {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "id=" + id +
+                ", code='" + code + '\'' +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", category='" + category + '\'' +
+                '}';
     }
 }

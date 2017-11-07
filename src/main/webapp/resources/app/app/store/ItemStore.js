@@ -9,6 +9,7 @@ Ext.define('SC.store.ItemStore', {
         type: 'ajax',
         api: {
             read : '/main/getitems',
+            create : '/main/saveitem'
         },
         reader: {
             type: 'json',
@@ -19,7 +20,7 @@ Ext.define('SC.store.ItemStore', {
             type: 'json',
             writeAllFields: true,
             encode: false,
-            root: 'items'
+            root: ''
         }
     }
 });

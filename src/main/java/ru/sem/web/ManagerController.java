@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -29,6 +30,15 @@ public class ManagerController {
     public List<Item> getAllItems(){
         log.debug("get all items");
         return itemService.getAll();
+    }
+
+    @RequestMapping(value = "/main/saveitem", method = RequestMethod.POST)
+    @ResponseBody
+    public Item createItem(@RequestBody Item item){
+        log.info(item.toString());
+        log.info("save item");
+
+        return itemService.save(item);
     }
 
 }

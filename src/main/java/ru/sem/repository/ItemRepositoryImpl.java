@@ -22,4 +22,15 @@ public class ItemRepositoryImpl implements ItemRepository {
     public List<Item> getAll() {
         return em.createQuery("SELECT i FROM Item i").getResultList();
     }
+
+    @Override
+    @Transactional
+    public Item save(Item item) {
+        if(item.isNew()){
+            em.persist(item);
+            return item;
+        }else{
+            return em.merge(item);
+        }
+    }
 }
