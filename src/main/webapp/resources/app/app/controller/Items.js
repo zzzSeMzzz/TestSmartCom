@@ -1,7 +1,7 @@
 Ext.define('SC.controller.Items', {
     extend: 'Ext.app.Controller',
 
-    views: ['ItemList', 'Item', 'EditItem'],
+    views: ['ItemList', 'EditItem'],
 
     models: ['Item'],
 
@@ -31,16 +31,12 @@ Ext.define('SC.controller.Items', {
                 'itemedit button[action=save]': {
                     click: this.updateUser
                 },
-                'itemwindow button[action=delete]': {
+                'itemlist button[action=delete]': {
 
                 }
             });
         },
-
-    clearForm: function(grid, record) {
-        var view = Ext.widget('bookwindow');
-        view.down('form').getForm().reset();
-    },
+    
 
     editUser: function(grid, record) {
         var edit = Ext.create('SC.view.EditItem').show();
@@ -65,7 +61,7 @@ Ext.define('SC.controller.Items', {
         } else{
             console.log('now create user');
             record = Ext.create('SC.model.Item');
-            
+
             record.set(values);
             //record.set('id', '0');
             //console.log(values);

@@ -5,10 +5,10 @@ Ext.application({
 
     controllers: ['Items'],
     stores: ['ItemStore'],
-    views: ['Item', 'SC.view.ItemList'],
+    views: ['ItemList', 'EditItem'],
 
     launch: function() {
-        console.log('dfdf');
+        console.log('start extjs app');
        /* Ext.create('Ext.container.Viewport', {
             layout: 'fit',
             items: {
