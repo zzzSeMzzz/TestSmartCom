@@ -1,0 +1,6 @@
+{
+  "success": true,
+  "items": [
+    {"id": 1, "code": "this is code", "name": "Л. Толстой", "price": 12, "category": "cat"}
+  ]
+}

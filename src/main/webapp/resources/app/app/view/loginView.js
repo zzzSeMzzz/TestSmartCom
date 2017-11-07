@@ -15,12 +15,14 @@ Ext.onReady(function(){
         items: [{
             xtype: 'textfield',
             fieldLabel: 'Логин',
+            value:'admin',
             name: 'username'
         },
             {
                 xtype: 'textfield',
                 name: 'password',
                 fieldLabel: 'Пароль',
+                value:'adm',
                 inputType: 'password'
             }],
         buttons: [{
@@ -39,6 +41,7 @@ Ext.onReady(function(){
         theForm.getForm().submit({
             success: function(form, action) {
                 Ext.MessageBox.alert('Авторизация пройдена.',action.result.message);
+                window.location.replace('/main/');
             },
             failure: function(form, action) {
                 Ext.MessageBox.alert('Ошибка авторизации.', action.result.message);

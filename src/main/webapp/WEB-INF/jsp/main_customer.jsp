@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Main window</title>
+    <title>Customer app</title>
 </head>
 <body>
 

@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `order`(
   PRIMARY KEY (`id`)
 );
 
-CREATE TABLE IF NOT EXISTS `order_item`(
+CREATE TABLE IF NOT EXISTS `item`(
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `code` varchar(255) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `order_item`(
   PRIMARY KEY (`id`)
 );
 
-CREATE TABLE IF NOT EXISTS `item`(
+CREATE TABLE IF NOT EXISTS `order_item`(
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `order_id` int(11) NOT NULL,
   `item_id` int(11) NOT NULL,

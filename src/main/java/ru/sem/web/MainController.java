@@ -3,18 +3,18 @@ package ru.sem.web;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import ru.sem.exceptions.NotFoundException;
-import ru.sem.model.BaseResponse;
-import ru.sem.model.User;
+
+import ru.sem.model.Role;
 import ru.sem.service.UserService;
+
+import java.util.Collection;
 
 
 /**
@@ -29,9 +29,18 @@ public class MainController {
     @Autowired
     UserService service;
 
+
     @RequestMapping(value="/main/", method = RequestMethod.GET)
     public String start(){
-        return "main";
+        Collection<SimpleGrantedAuthority> authorities = (Collection<SimpleGrantedAuthority>)
+                SecurityContextHolder.getContext().getAuthentication().getAuthorities();
+        log.info(authorities.toString());
+        //log.info(authorities.stream().findFirst().get().getAuthority());
+
+        if(authorities.stream().findFirst().get().getAuthority()
+                .equals(Role.ROLE_MANAGER.name()))
+        return "main_manager";
+        else return "main_customer";
     }
 
 
