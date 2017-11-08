@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS `users`(
   `login` varchar(255) DEFAULT NULL,
   `pass` varchar(255) DEFAULT NULL,
   `id_role` int(11) DEFAULT NULL,
-  `id_customer` int(11) DEFAULT -1,
+  `id_customer` int(11) DEFAULT NULL,
 PRIMARY KEY (`id`)
 );
 

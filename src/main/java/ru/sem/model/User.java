@@ -6,13 +6,26 @@ import javax.persistence.*;
 /**
  * Created by Admin on 27.10.2017.
  */
+
+@NamedQueries({
+
+        @NamedQuery(name = User.GET_ALL,
+                query = "SELECT u FROM User u"),
+        @NamedQuery(name = User.DELETE,
+                query = "DELETE FROM User u WHERE u.id=:id"),
+
+})
+
 @Entity
 @Table(name = "users")
 public class User {
 
+    public static final String GET_ALL = "User.getAll";
+    public static final String DELETE = "User.delete";
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     @Column
     private String login;
@@ -24,11 +37,20 @@ public class User {
     @Enumerated(EnumType.ORDINAL)
     private Role role;
 
-    public int getId() {
+    @OneToOne(fetch=FetchType.EAGER)
+    @JoinColumn(name="id_customer")
+    private Customer customer;
+
+    public boolean isNew(){
+        return getId() == null;
+    }
+
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -56,6 +78,14 @@ public class User {
         this.role = role;
     }
 
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -63,6 +93,7 @@ public class User {
                 ", login='" + login + '\'' +
                 ", pass='" + pass + '\'' +
                 ", role=" + role +
+                ", customer=" + customer +
                 '}';
     }
 }

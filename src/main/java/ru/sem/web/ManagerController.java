@@ -13,6 +13,8 @@ import ru.sem.model.Customer;
 import ru.sem.model.Item;
 import ru.sem.service.CustomerService;
 import ru.sem.service.ItemService;
+import ru.sem.service.UserService;
+import ru.sem.to.UserAdv;
 
 import java.util.List;
 
@@ -28,6 +30,9 @@ public class ManagerController {
 
     @Autowired
     CustomerService customerService;
+
+    @Autowired
+    UserService userService;
 
     @RequestMapping(value="/main/getitems", method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -78,6 +83,23 @@ public class ManagerController {
         log.info("del customer");
 
         return customerService.delete(customer.getId());
+    }
+
+    @RequestMapping(value="/main/getusersadv", method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public List<UserAdv> getAllUsersAdv(){
+        return userService.getAllUserWithCustomerName();
+    }
+
+
+    @RequestMapping(value = "/main/saveuseradv", method = RequestMethod.POST)
+    @ResponseBody
+    public UserAdv createItem(@RequestBody UserAdv userAdv){
+        log.info(userAdv.toString());
+        log.info("save user");
+
+        return userService.save(userAdv);
     }
 
 }

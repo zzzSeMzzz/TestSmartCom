@@ -52,6 +52,7 @@ Ext.define('SC.view.EditCustomer', {
                     {
                         xtype: 'textfield',
                         maskRe: /[0-9.]/,
+                        useNull: true,
                         name : 'discount',
                         fieldLabel: 'Скидка, %'
                     }

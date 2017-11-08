@@ -9,7 +9,7 @@ import javax.persistence.*;
 @NamedQueries({
 
         @NamedQuery(name = Customer.GET_ALL_SORTED,
-                query = "SELECT c FROM Customer c"),
+                query = "SELECT c FROM Customer c ORDER BY c.name"),
         @NamedQuery(name = Customer.DELETE,
                 query = "DELETE FROM Customer c WHERE c.id=:id"),
 
