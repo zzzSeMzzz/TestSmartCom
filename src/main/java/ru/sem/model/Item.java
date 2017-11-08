@@ -14,14 +14,14 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "item")
-public class Item {
+public class Item extends BaseEntity{
 
     public static final String DELETE = "Item.delete";
 
-    @Id
+    /*@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
-    private Integer id;
+    private Integer id;*/
 
     @Column
     private String code;
@@ -35,7 +35,7 @@ public class Item {
     @Column
     private String category;
 
-    public boolean isNew() {
+    /*public boolean isNew() {
         return (getId() == null);
     }
 
@@ -45,7 +45,7 @@ public class Item {
 
     public void setId(Integer id) {
         this.id = id;
-    }
+    }*/
 
     public String getCode() {
         return code;
@@ -82,7 +82,7 @@ public class Item {
     @Override
     public String toString() {
         return "Item{" +
-                "id=" + id +
+                "id=" + this.id +
                 ", code='" + code + '\'' +
                 ", name='" + name + '\'' +
                 ", price=" + price +

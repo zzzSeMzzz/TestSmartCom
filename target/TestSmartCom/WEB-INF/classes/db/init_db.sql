@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `customer`(
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   `code` varchar(255) DEFAULT NULL,
-  `adress` varchar(255) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
   `discount` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 );

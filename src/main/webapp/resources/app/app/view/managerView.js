@@ -69,7 +69,7 @@ Ext.onReady(function(){
             width: Ext.getBody().getViewSize().width*0.75,
             height: Ext.getBody().getViewSize().width*0.35,
             items:[{
-                //xtype: 'itemlist'
+                xtype: 'customerlist'
             }]
         });
         window.show();
