@@ -1,5 +1,6 @@
 package ru.sem.web;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -95,11 +96,19 @@ public class ManagerController {
 
     @RequestMapping(value = "/main/saveuseradv", method = RequestMethod.POST)
     @ResponseBody
-    public UserAdv createItem(@RequestBody UserAdv userAdv){
+    public UserAdv createUser(@RequestBody UserAdv userAdv){
         log.info(userAdv.toString());
         log.info("save user");
 
         return userService.save(userAdv);
+    }
+
+    @RequestMapping(value = "/main/deluser", method = RequestMethod.POST)
+    @ResponseBody
+    public Boolean delUser(@RequestBody UserAdv userAdv){
+        log.info("delete user id="+userAdv.getId());
+
+        return userService.delete(userAdv.getId());
     }
 
 }

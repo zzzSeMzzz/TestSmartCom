@@ -10,8 +10,8 @@ Ext.define('SC.store.UserStore', {
         api: {
             read : '/main/getusersadv',
             create : '/main/saveuseradv',
-            update : '/main/saveitem',
-            destroy : '/main/delitem'
+            update : '/main/saveuseradv',
+            destroy : '/main/deluser'
         },
         reader: {
             type: 'json',

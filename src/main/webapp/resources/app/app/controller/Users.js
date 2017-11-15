@@ -32,7 +32,7 @@ Ext.define('SC.controller.Users', {
                     click: this.updateItem
                 },
                 'userlist button[action=delete]': {
-                    //click: this.deleteItem
+                    click: this.deleteItem
                 }
             });
         },
@@ -72,11 +72,11 @@ Ext.define('SC.controller.Users', {
     },
 
     deleteItem: function(button) {
-        var grid = this.getCustomerlist(),
+        var grid = this.getUserlist(),
             record = grid.getSelectionModel().getSelection(),
-            store = this.getStore('CustomerStore');
+            store = this.getStore('UserStore');
 
         store.remove(record);
-        this.getStore('CustomerStore').sync();
+        this.getStore('UserStore').sync();
     }
 });
