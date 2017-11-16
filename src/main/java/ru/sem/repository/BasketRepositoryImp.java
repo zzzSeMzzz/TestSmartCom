@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import ru.sem.model.BasketItem;
 import ru.sem.model.Item;
+import ru.sem.model.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -55,5 +56,10 @@ public class BasketRepositoryImp implements BasketRepository {
             basketItem.incCount();
             return em.merge(basketItem);
         }
+    }
+
+    @Override
+    public boolean delete(int id) {
+        return em.createNamedQuery(BasketItem.DELETE).setParameter("id", id).executeUpdate() != 0;
     }
 }

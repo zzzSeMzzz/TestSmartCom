@@ -3,9 +3,9 @@ Ext.application({
     name: 'SC',
     appFolder: '../../resources/app/app',
 
-    controllers: ['Items', 'Customers', 'Users', 'ItemsC'],
-    stores: ['ItemStore', 'CustomerStore', 'UserStore', 'RoleStore'],
-    views: ['ItemList', 'EditItem', 'CustomerList', 'EditCustomer', 'UserList', 'ItemListC'],
+    controllers: ['Items', 'Customers', 'Users', 'ItemsC', 'BasketItems'],
+    stores: ['ItemStore', 'CustomerStore', 'UserStore', 'RoleStore', 'SimpleBasketStore'],
+    views: ['ItemList', 'EditItem', 'CustomerList', 'EditCustomer', 'UserList', 'ItemListC', 'SimpleBasketList'],
 
     launch: function() {
         console.log('start extjs app');

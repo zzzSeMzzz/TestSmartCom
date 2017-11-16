@@ -4,8 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.sem.model.BasketItem;
 import ru.sem.repository.BasketRepository;
+import ru.sem.to.SimpleBasketItem;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by Admin on 16.11.2017.
@@ -30,5 +32,23 @@ public class BasketServiceImpl implements BasketService {
     @Override
     public BasketItem addItemToCustomer(int customer_id, int item_id) {
         return repository.addItemToCustomer(customer_id, item_id);
+    }
+
+    @Override
+    public List<SimpleBasketItem> getMyBasketSimpleItems(int customerId) {
+        return getByCustomerId(customerId).stream().map(basketItem -> getSimpleBasketItem(basketItem))
+                .collect(Collectors.toList());
+    }
+
+
+    public static SimpleBasketItem getSimpleBasketItem(BasketItem basketItem){
+        String itemName="";
+        if(basketItem.getItem()!=null) itemName=basketItem.getItem().getName();
+        return new SimpleBasketItem(basketItem.getId(), basketItem.getCount(), itemName);
+    }
+
+    @Override
+    public boolean delete(int id) {
+        return repository.delete(id);
     }
 }

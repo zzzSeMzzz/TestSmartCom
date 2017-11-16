@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.*;
 import ru.sem.model.BasketItem;
 import ru.sem.model.IdUserDetails;
 import ru.sem.service.BasketService;
+import ru.sem.to.SimpleBasketItem;
+import ru.sem.to.UserAdv;
+
+import java.util.List;
 
 
 /**
@@ -44,5 +48,18 @@ public class CustomerController {
     public BasketItem addItemToBasket(@RequestParam("id") int id){
         log.info("addItemToBasket id_item="+id);
         return basketService.addItemToCustomer(getUserDetails().getUserId(), id);
+    }
+
+    @RequestMapping(value="/main/getbasket/", method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public List<SimpleBasketItem> getMyBasket(){
+        return basketService.getMyBasketSimpleItems(getUserDetails().getUserId());
+    }
+
+    @RequestMapping(value = "/main/delbasketitem/", method = RequestMethod.POST)
+    @ResponseBody
+    public Boolean delBasketItem(@RequestBody SimpleBasketItem simpleBasketItem){
+        return basketService.delete(simpleBasketItem.getId());
     }
 }

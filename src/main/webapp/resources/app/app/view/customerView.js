@@ -19,7 +19,7 @@ Ext.onReady(function(){
             {
                 text: 'Корзина',
                 handler: function() {
-                    //btnManageCustomers();
+                    btnShowBasket();
                 }
             }
         ]
@@ -36,6 +36,18 @@ Ext.onReady(function(){
             height: Ext.getBody().getViewSize().width*0.35,
             items:[{
                 xtype: 'itemlistc'
+            }]
+        });
+        window.show();
+    }
+
+    function btnShowBasket() {
+        var window = Ext.create('Ext.window.Window', {
+            title: 'Товары',
+            width: Ext.getBody().getViewSize().width*0.75,
+            height: Ext.getBody().getViewSize().width*0.35,
+            items:[{
+                xtype: 'basketlist'
             }]
         });
         window.show();
