@@ -59,3 +59,11 @@ CREATE TABLE IF NOT EXISTS `order_item`(
   `item_price` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 );
+
+CREATE TABLE IF NOT EXISTS `basket`(
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_customer` int(11) NOT NULL,
+  `id_item` int(11) NOT NULL,
+  `count` int(11) DEFAULT 1,
+  PRIMARY KEY (`id`)
+);

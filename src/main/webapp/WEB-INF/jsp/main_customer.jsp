@@ -8,9 +8,33 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Customer app</title>
+    <title>Main window</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>TestSmartComApp - customer</title>
+    <link rel="stylesheet" type="text/css" href="http://cdn.sencha.com/ext/gpl/4.2.0/resources/css/ext-all.css"/>
+    <script type="text/javascript" src="http://cdn.sencha.com/ext/gpl/4.2.0/ext-all.js"></script>
+    <script type="text/javascript" src="../../resources/app/app/view/app.js"></script>
+    <script type="text/javascript" src="../../resources/app/app/view/customerView.js"></script>
+    <script type="text/javascript" src="../../resources/ext-4.0/Ux.InputTextMask.js"></script>
+    <style>
+        .tool {
+            background: #f0f0f0;
+        }
+        .main {
+            margin: 12px;
+            clear:both;
+            line-height: 1px;
+            solid-color: #3ed0a7;
+            color: #7742d0;
+        }
+    </style>
 </head>
 <body>
+<div id="toolbar" class="tool">
 
+</div>
+<div id="mainView" class="main">
+
+</div>
 </body>
 </html>

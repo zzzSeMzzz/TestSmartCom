@@ -16,7 +16,7 @@
     <http use-expressions="true"  disable-url-rewriting="true" auto-config="false" >
         <csrf disabled="true"/>
         <intercept-url pattern="/login.do" access="permitAll"/>
-        <intercept-url pattern="/main/**" access="hasRole('ROLE_MANAGER')" />
+        <intercept-url pattern="/main/**" access="isAuthenticated()" />
         <security:intercept-url pattern="/**" access="permitAll" />
         <security:form-login login-page="/login.do"
                     default-target-url="/main"

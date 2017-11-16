@@ -8,7 +8,7 @@ Ext.define('SC.view.EditUser', {
     layout: 'fit',
     autoShow: true,
     width: 280,
-    
+
 
 
     initComponent: function() {

@@ -36,7 +36,7 @@ public class MainController {
                 SecurityContextHolder.getContext().getAuthentication().getAuthorities();
         log.info(authorities.toString());
         //log.info(authorities.stream().findFirst().get().getAuthority());
-
+        log.info("username="+SecurityContextHolder.getContext().getAuthentication().getName());
         if(authorities.stream().findFirst().get().getAuthority()
                 .equals(Role.ROLE_MANAGER.name()))
         return "main_manager";

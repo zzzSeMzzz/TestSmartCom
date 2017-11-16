@@ -1,6 +1,9 @@
 package ru.sem.model;
 
 
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+
 import javax.persistence.*;
 
 /**
@@ -39,6 +42,7 @@ public class User {
 
     @OneToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="id_customer")
+    @NotFound(action = NotFoundAction.IGNORE)
     private Customer customer;
 
     public boolean isNew(){

@@ -56,6 +56,11 @@ Ext.define('SC.controller.Users', {
 
         console.log(values);
 
+        if(values.role=="ROLE_CUSTOMER" && values.idCustomer ==""){
+            Ext.MessageBox.alert('Ошибка сохранения','Для ROLE_CUSTOMER должен быть установлен заказчик');
+            return;
+        }
+
         if (values.id > 0){
             console.log('now update user');
             record.set(values);

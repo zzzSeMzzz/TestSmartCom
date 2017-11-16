@@ -2,7 +2,7 @@ Ext.define('SC.view.EditItem', {
     extend: 'Ext.window.Window',
     alias : 'widget.itemedit',
 
-    requires: ['Ext.form.Panel','Ext.form.field.Text'],
+    requires: ['Ext.form.Panel','Ext.form.field.Text', 'Ux.InputTextMask'],
     modal:true,
     title : 'Редактирование товара',
     layout: 'fit',
@@ -42,7 +42,8 @@ Ext.define('SC.view.EditItem', {
                     {
                         xtype: 'textfield',
                         name : 'code',
-                        fieldLabel: 'Код'
+                        fieldLabel: 'Код',
+                        plugins: [new Ux.InputTextMask('99-9999-LL99', true)]
                     },
                     {
                         xtype: 'textfield',

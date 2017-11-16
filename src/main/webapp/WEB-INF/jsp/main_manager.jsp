@@ -15,6 +15,7 @@
     <script type="text/javascript" src="http://cdn.sencha.com/ext/gpl/4.2.0/ext-all.js"></script>
     <script type="text/javascript" src="../../resources/app/app/view/app.js"></script>
     <script type="text/javascript" src="../../resources/app/app/view/managerView.js"></script>
+    <script type="text/javascript" src="../../resources/ext-4.0/Ux.InputTextMask.js"></script>
     <style>
         .tool {
             background: #f0f0f0;

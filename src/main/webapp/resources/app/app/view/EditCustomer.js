@@ -2,7 +2,7 @@ Ext.define('SC.view.EditCustomer', {
     extend: 'Ext.window.Window',
     alias : 'widget.customeredit',
 
-    requires: ['Ext.form.Panel','Ext.form.field.Text'],
+    requires: ['Ext.form.Panel','Ext.form.field.Text', 'Ux.InputTextMask'],
     modal:true,
     title : 'Редактирование заказчика',
     layout: 'fit',
@@ -42,7 +42,8 @@ Ext.define('SC.view.EditCustomer', {
                     {
                         xtype: 'textfield',
                         name : 'code',
-                        fieldLabel: 'Код'
+                        fieldLabel: 'Код',
+                        plugins: [new Ux.InputTextMask('9999-9999', true)]
                     },
                     {
                         xtype: 'textfield',

@@ -11,8 +11,8 @@ Ext.define('SC.view.UserList' ,{
             {header: 'Логин',  dataIndex: 'login',  flex: 1},
             {header: 'Пароль',  dataIndex: 'password',  flex: 1},
             {header: 'Роль', dataIndex: 'role', flex: 1},
-            {header: 'ID заказчика', dataIndex: 'idCustomer', flex: 1},
-            {header: 'ID role', dataIndex: 'idRole', flex: 1, hidden:false},
+            {header: 'ID заказчика', dataIndex: 'idCustomer', flex: 1, hidden:true},
+            {header: 'ID role', dataIndex: 'idRole', flex: 1, hidden:true},
             {header: 'Заказчик', dataIndex: 'nameCustomer', flex: 1}
         ];
 

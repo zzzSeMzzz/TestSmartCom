@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
+import ru.sem.model.IdUserDetails;
 import ru.sem.repository.UserRepository;
 
 import java.util.Arrays;
@@ -27,8 +28,8 @@ public class DbUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         ru.sem.model.User activeUserInfo = service.getDataByUserName(userName);
         GrantedAuthority authority = new SimpleGrantedAuthority(activeUserInfo.getRole().name());
-        UserDetails userDetails = new User(activeUserInfo.getLogin(),
-                activeUserInfo.getPass(), Arrays.asList(authority));
+        UserDetails userDetails = new IdUserDetails(activeUserInfo.getLogin(),
+                activeUserInfo.getPass(), Arrays.asList(authority), activeUserInfo.getId());
         return userDetails;
     }
 }
