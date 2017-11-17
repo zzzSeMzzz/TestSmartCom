@@ -7,7 +7,7 @@ Ext.onReady(function(){
             {
                 text: 'Управление заказами',
                 handler: function() {
-                    btnManageOrders();
+                    btnShowOrders();
                 }
             },'-',
             {
@@ -35,15 +35,17 @@ Ext.onReady(function(){
         items: [ toolBar ]
     });
 
-    function btnManageOrders() {
+    function btnShowOrders() {
         var window = Ext.create('Ext.window.Window', {
             title: 'Управление заказами',
             width: Ext.getBody().getViewSize().width*0.75,
             height: Ext.getBody().getViewSize().width*0.35,
             items:[{
-                //xtype: 'itemlist'
+                xtype: 'orderlistadmin'
             }]
         });
+
+        Ext.getCmp('orderlistadmin').getStore('OrderStore').load();
         window.show();
     }
 

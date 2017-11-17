@@ -13,6 +13,8 @@ public class SimpleOrder {
 
     private String customerName;
 
+    private int customerId;
+
     private Date orderDate;
 
     private Date shipmentDate;
@@ -24,13 +26,15 @@ public class SimpleOrder {
     public SimpleOrder() {
     }
 
-    public SimpleOrder(int id, String customerName, Date orderDate, Date shipmentDate, OrderStatus status, int orderNumber) {
+    public SimpleOrder(int id, String customerName, Date orderDate, Date shipmentDate, OrderStatus status,
+                       int orderNumber, int customerId) {
         this.id = id;
         this.customerName = customerName;
         this.orderDate = orderDate;
         this.status = status;
         this.orderNumber=orderNumber;
         this.shipmentDate=shipmentDate;
+        this.customerId=customerId;
     }
 
     public int getId() {
@@ -71,6 +75,22 @@ public class SimpleOrder {
 
     public void setOrderNumber(int orderNumber) {
         this.orderNumber = orderNumber;
+    }
+
+    public Date getShipmentDate() {
+        return shipmentDate;
+    }
+
+    public void setShipmentDate(Date shipmentDate) {
+        this.shipmentDate = shipmentDate;
+    }
+
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
     }
 
     @Override

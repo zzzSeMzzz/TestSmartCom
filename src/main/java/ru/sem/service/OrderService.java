@@ -20,5 +20,7 @@ public interface OrderService {
 
     Orderm save(Orderm order);
 
+    Orderm save(SimpleOrder simpleOrder);
+
     boolean delete(int id);
 }

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import ru.sem.model.BasketItem;
 import ru.sem.model.OrderItem;
 import ru.sem.repository.OrderItemRepository;
+import ru.sem.to.SimpleOrder;
 
 /**
  * Created by Admin on 17.11.2017.

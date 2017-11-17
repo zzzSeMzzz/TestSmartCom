@@ -15,14 +15,14 @@ Ext.onReady(function(){
         items: [{
             xtype: 'textfield',
             fieldLabel: 'Логин',
-            value:'t',
+            value:'admin',
             name: 'username'
         },
             {
                 xtype: 'textfield',
                 name: 'password',
                 fieldLabel: 'Пароль',
-                value:'t',
+                value:'adm',
                 inputType: 'password'
             }],
         buttons: [{

@@ -1,0 +1,8 @@
+{
+  "success": true,
+  "roles": [
+    {"status": "NEW"},
+    {"status": "INWORK"},
+    {"status": "DONE"}
+  ]
+}

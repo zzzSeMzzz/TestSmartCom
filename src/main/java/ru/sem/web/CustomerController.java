@@ -116,4 +116,11 @@ public class CustomerController {
     public Boolean delOrders(@RequestBody SimpleOrder simpleOrder){
         return orderService.delete(simpleOrder.getId());
     }
+
+    @RequestMapping(value="/main/updorder/", method = RequestMethod.POST,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public Orderm updateOrders(@RequestBody SimpleOrder simpleOrder){
+        return orderService.save(simpleOrder);
+    }
 }

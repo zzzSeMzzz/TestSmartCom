@@ -2,6 +2,7 @@ package ru.sem.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.sem.model.Customer;
 import ru.sem.model.Orderm;
 import ru.sem.repository.OrderRepository;
 import ru.sem.to.SimpleOrder;
@@ -45,7 +46,7 @@ public class OrderServiceImpl implements OrderService {
         String customerName="";
         if(order.getCustomer()!=null) customerName=order.getCustomer().getName();
         return new SimpleOrder(order.getId(),customerName, order.getOrderDate(), order.getShipmentDate(),
-                order.getStatus(), order.getOrderNumber());
+                order.getStatus(), order.getOrderNumber(), order.getCustomer().getId());
     }
 
     @Override
@@ -56,5 +57,19 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public boolean delete(int id) {
         return repository.delete(id);
+    }
+
+    @Override
+    public Orderm save(SimpleOrder simpleOrder) {
+        Orderm order = new Orderm();
+        order.setId(simpleOrder.getId());
+        order.setOrderDate(simpleOrder.getOrderDate());
+        order.setShipmentDate(simpleOrder.getShipmentDate());
+        order.setStatus(simpleOrder.getStatus());
+        Customer customer = new Customer();
+        customer.setId(simpleOrder.getCustomerId());
+        order.setCustomer(customer);
+        order.setOrderNumber(simpleOrder.getOrderNumber());
+        return repository.save(order);
     }
 }
