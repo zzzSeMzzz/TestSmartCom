@@ -21,6 +21,12 @@ Ext.onReady(function(){
                 handler: function() {
                     btnShowBasket();
                 }
+            },'->',
+            {
+                text : 'Logout',
+                handler: function() {
+                    window.location.replace('/logout');
+                }
             }
         ]
     });

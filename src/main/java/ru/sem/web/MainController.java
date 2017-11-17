@@ -49,4 +49,16 @@ public class MainController {
         return "index";
     }
 
+    @RequestMapping(value = "/logout/", method=RequestMethod.GET)
+    public String logout(){
+        log.info("logout");
+        return "logout";
+    }
+
+    @RequestMapping(value = "/", method=RequestMethod.GET)
+    public String info(){
+        log.info("info");
+        return "info";
+    }
+
 }

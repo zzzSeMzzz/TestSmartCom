@@ -27,6 +27,12 @@ Ext.onReady(function(){
                 handler: function() {
                     btnManageUsers();
                 }
+            },'->',
+            {
+                text : 'Logout',
+                handler: function() {
+                    window.location.replace('/logout');
+                }
             }
         ]
     });

@@ -16,6 +16,7 @@
     <http use-expressions="true"  disable-url-rewriting="true" auto-config="false" >
         <csrf disabled="true"/>
         <intercept-url pattern="/login.do" access="permitAll"/>
+        <intercept-url pattern="/logout" access="permitAll"/>
         <intercept-url pattern="/main/**" access="isAuthenticated()" />
         <security:intercept-url pattern="/**" access="permitAll" />
         <security:form-login login-page="/login.do"
@@ -26,7 +27,7 @@
                     authentication-success-handler-ref="loginSuccessHandler"
                     authentication-failure-handler-ref="loginFailureHandler"
                     authentication-failure-url="/loginerr"/>
-        <logout invalidate-session="true" logout-success-url="/" logout-url="/j_spring_security_logout"/>
+        <logout invalidate-session="true" logout-success-url="/logout/" logout-url="/logout"/>
     </http>
 
 
