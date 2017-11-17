@@ -26,7 +26,7 @@ public class LoginFailureHandler implements AuthenticationFailureHandler {
 
         ObjectMapper mapper = new ObjectMapper();
         BaseResponse baseResponse = new BaseResponse();
-        baseResponse.setMessage("failed login via handler");
+        baseResponse.setMessage("Failed login: "+e.getMessage());
         baseResponse.setSuccess(false);
         String jsonString = mapper.writeValueAsString(baseResponse);
         OutputStream out = response.getOutputStream();

@@ -13,7 +13,7 @@ Ext.onReady(function(){
             {
                 text: 'Мои заказы',
                 handler: function() {
-                    //btnManageItems();
+                    btnShowOrders();
                 }
             },'-',
             {
@@ -52,6 +52,20 @@ Ext.onReady(function(){
         });
         
         Ext.getCmp('basketlist').getStore('SimpleBasketStore').load();
+        window.show();
+    }
+
+    function btnShowOrders() {
+        var window = Ext.create('Ext.window.Window', {
+            title: 'Мои заказы',
+            width: Ext.getBody().getViewSize().width*0.75,
+            height: Ext.getBody().getViewSize().width*0.35,
+            items:[{
+                xtype: 'orderlist'
+            }]
+        });
+
+        Ext.getCmp('orderlist').getStore('OrderStore').load();
         window.show();
     }
 

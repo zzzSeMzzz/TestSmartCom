@@ -19,4 +19,6 @@ public interface OrderService {
     List<SimpleOrder> getAllOrderSimple();
 
     Orderm save(Orderm order);
+
+    boolean delete(int id);
 }

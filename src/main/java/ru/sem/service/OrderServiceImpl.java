@@ -44,11 +44,17 @@ public class OrderServiceImpl implements OrderService {
     public static SimpleOrder convertToSimpleOrder(Orderm order){
         String customerName="";
         if(order.getCustomer()!=null) customerName=order.getCustomer().getName();
-        return new SimpleOrder(order.getId(),customerName, order.getOrderDate(), order.getStatus(), order.getOrderNumber());
+        return new SimpleOrder(order.getId(),customerName, order.getOrderDate(), order.getShipmentDate(),
+                order.getStatus(), order.getOrderNumber());
     }
 
     @Override
     public Orderm save(Orderm order) {
         return repository.save(order);
+    }
+
+    @Override
+    public boolean delete(int id) {
+        return repository.delete(id);
     }
 }

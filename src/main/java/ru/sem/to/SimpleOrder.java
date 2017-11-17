@@ -15,6 +15,8 @@ public class SimpleOrder {
 
     private Date orderDate;
 
+    private Date shipmentDate;
+
     private OrderStatus status;
 
     private int orderNumber;
@@ -22,12 +24,13 @@ public class SimpleOrder {
     public SimpleOrder() {
     }
 
-    public SimpleOrder(int id, String customerName, Date orderDate, OrderStatus status, int orderNumber) {
+    public SimpleOrder(int id, String customerName, Date orderDate, Date shipmentDate, OrderStatus status, int orderNumber) {
         this.id = id;
         this.customerName = customerName;
         this.orderDate = orderDate;
         this.status = status;
         this.orderNumber=orderNumber;
+        this.shipmentDate=shipmentDate;
     }
 
     public int getId() {

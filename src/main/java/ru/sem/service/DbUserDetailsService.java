@@ -8,7 +8,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
+import ru.sem.model.Customer;
 import ru.sem.model.IdUserDetails;
+import ru.sem.model.Role;
 import ru.sem.repository.UserRepository;
 
 import java.util.Arrays;
@@ -28,8 +30,17 @@ public class DbUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         ru.sem.model.User activeUserInfo = service.getDataByUserName(userName);
         GrantedAuthority authority = new SimpleGrantedAuthority(activeUserInfo.getRole().name());
-        UserDetails userDetails = new IdUserDetails(activeUserInfo.getLogin(),
-                activeUserInfo.getPass(), Arrays.asList(authority), activeUserInfo.getId());
-        return userDetails;
+        if(activeUserInfo.getRole()== Role.ROLE_CUSTOMER){
+            Customer customer = activeUserInfo.getCustomer();
+            if(customer==null) throw new UsernameNotFoundException("К ROLE_CUSTOMER должен быть привязан заказчик. " +
+                    "Возможно заказчик был удален из БД.");
+            UserDetails userDetails = new IdUserDetails(activeUserInfo.getLogin(),
+                    activeUserInfo.getPass(), Arrays.asList(authority), activeUserInfo.getId(), customer.getId());
+            return userDetails;
+        }else {
+            UserDetails userDetails = new IdUserDetails(activeUserInfo.getLogin(),
+                    activeUserInfo.getPass(), Arrays.asList(authority), activeUserInfo.getId(), -1);
+            return userDetails;
+        }
     }
 }

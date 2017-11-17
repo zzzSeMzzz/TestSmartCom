@@ -40,6 +40,8 @@ Ext.define('SC.view.CreateOrder', {
                         xtype: 'textfield',
                         name : 'orderNumber',
                         id : 'orderNumber',
+                        maxLength:7,
+                        enforceMaxLength : true,
                         maskRe: /[0-9.]/,
                         fieldLabel: 'Номер заказа'
                     },

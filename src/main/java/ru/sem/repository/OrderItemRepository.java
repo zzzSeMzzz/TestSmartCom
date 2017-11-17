@@ -12,4 +12,6 @@ public interface OrderItemRepository {
     OrderItem save(OrderItem orderItem, int itemId, int orderId);
 
     OrderItem save(OrderItem orderItem,  int orderId);
+
+    boolean delete(int id);
 }

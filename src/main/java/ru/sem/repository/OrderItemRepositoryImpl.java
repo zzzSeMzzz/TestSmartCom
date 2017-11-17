@@ -51,4 +51,9 @@ public class OrderItemRepositoryImpl implements OrderItemRepository{
             return em.merge(orderItem);
         }
     }
+
+    @Override
+    public boolean delete(int id) {
+        return false;
+    }
 }

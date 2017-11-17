@@ -10,10 +10,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import ru.sem.model.BasketItem;
-import ru.sem.model.Customer;
-import ru.sem.model.IdUserDetails;
-import ru.sem.model.Orderm;
+import ru.sem.model.*;
 import ru.sem.service.BasketService;
 import ru.sem.service.OrderItemService;
 import ru.sem.service.OrderService;
@@ -59,14 +56,14 @@ public class CustomerController {
     @ResponseBody
     public BasketItem addItemToBasket(@RequestParam("id") int id){
         log.info("addItemToBasket id_item="+id);
-        return basketService.addItemToCustomer(getUserDetails().getUserId(), id);
+        return basketService.addItemToCustomer(getUserDetails().getCustomerId(), id);
     }
 
     @RequestMapping(value="/main/getbasket/", method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public List<SimpleBasketItem> getMyBasket(){
-        return basketService.getMyBasketSimpleItems(getUserDetails().getUserId());
+        return basketService.getMyBasketSimpleItems(getUserDetails().getCustomerId());
     }
 
     @RequestMapping(value = "/main/delbasketitem/", method = RequestMethod.POST)
@@ -83,7 +80,7 @@ public class CustomerController {
         Orderm order = new Orderm();
         //order.setId(simpleOrder.getId());//null - is New
         Customer customer = new Customer();
-        customer.setId(getUserDetails().getUserId());
+        customer.setId(getUserDetails().getCustomerId());
         order.setCustomer(customer);
         order.setStatus(simpleOrder.getStatus());
         order.setOrderDate(simpleOrder.getOrderDate());
@@ -94,11 +91,29 @@ public class CustomerController {
             //если заказа создан успешно, то
             //создаем order_item's
             //и очищаем корзину
-            basketService.getByCustomerId(getUserDetails().getUserId())
+            basketService.getByCustomerId(getUserDetails().getCustomerId())
                     .stream().forEach(basketItem -> orderItemService.createFromBasketItem(basketItem, orderId));
 
-            basketService.deleteAllMy(getUserDetails().getUserId());
+            basketService.deleteAllMy(getUserDetails().getCustomerId());
             return simpleOrder;
         }else return null;
+    }
+
+    @RequestMapping(value="/main/getorders/", method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public List<SimpleOrder> getOrders(){
+        if(getUserDetails().getRole()== Role.ROLE_CUSTOMER) {
+            return orderService.getMyOrderSimple(getUserDetails().getCustomerId());
+        }else{
+            return orderService.getAllOrderSimple();
+        }
+    }
+
+    @RequestMapping(value="/main/delorder/", method = RequestMethod.POST,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public Boolean delOrders(@RequestBody SimpleOrder simpleOrder){
+        return orderService.delete(simpleOrder.getId());
     }
 }
