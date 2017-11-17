@@ -1,7 +1,7 @@
 Ext.define('SC.view.SimpleBasketList' ,{
     extend: 'Ext.grid.Panel',
     alias: 'widget.basketlist',
-
+    id:'basketlist',
     title: 'Корзина',
     store: 'SimpleBasketStore',
 

@@ -17,7 +17,10 @@ import javax.persistence.*;
         @NamedQuery(name = BasketItem.GET_BY_ID_FROM_CUSTOMER,
                 query = "SELECT b from BasketItem b where b.id_customer=:id AND b.item.id=:item_id"),
 
-        @NamedQuery(name = BasketItem.DELETE, query = "DELETE FROM BasketItem b WHERE b.id=:id")
+        @NamedQuery(name = BasketItem.DELETE, query = "DELETE FROM BasketItem b WHERE b.id=:id"),
+
+        @NamedQuery(name = BasketItem.DELETE_ALL_MY, query = "DELETE FROM BasketItem b WHERE " +
+                "b.id_customer=:id_customer")
 
 })
 
@@ -28,6 +31,7 @@ public class BasketItem extends BaseEntity{
     public static final String GET_ALL_BY_ID = "Basket.GetAllByCustomerId";
     public static final String GET_BY_ID_FROM_CUSTOMER = "Basket.GetByIdFromCustomer";
     public static final String DELETE = "Basket.Delete";
+    public static final String DELETE_ALL_MY = "Basket.DeleteAllMy";
 
     @Column
     private int id_customer;

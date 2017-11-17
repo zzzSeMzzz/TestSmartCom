@@ -42,7 +42,7 @@ Ext.define('SC.controller.ItemsC', {
                 success: function(response, options){
                     var json = Ext.decode(response.responseText);
                     console.log(json);
-                    Ext.MessageBox.alert('Успешно.',json.item.name+' добален в корзину');
+                    Ext.MessageBox.alert('Успешно.','Товар добален в корзину');
 
                 },
                 failure: function(response, options){

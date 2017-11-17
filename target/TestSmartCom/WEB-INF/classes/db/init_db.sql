@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `customer`(
   PRIMARY KEY (`id`)
 );
 
-CREATE TABLE IF NOT EXISTS `order`(
+CREATE TABLE IF NOT EXISTS `orders`(
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `customer_id` int(11) NOT NULL,
   `order_date` DATE DEFAULT NULL,

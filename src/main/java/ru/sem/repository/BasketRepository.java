@@ -16,4 +16,6 @@ public interface BasketRepository {
     BasketItem addItemToCustomer(int customer_id, int item_id);
 
     boolean delete(int id);
+
+    boolean deleteAllMy(int customer_id);
 }

@@ -50,6 +50,8 @@ Ext.onReady(function(){
                 xtype: 'basketlist'
             }]
         });
+        
+        Ext.getCmp('basketlist').getStore('SimpleBasketStore').load();
         window.show();
     }
 

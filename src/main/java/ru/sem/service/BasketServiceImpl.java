@@ -51,4 +51,9 @@ public class BasketServiceImpl implements BasketService {
     public boolean delete(int id) {
         return repository.delete(id);
     }
+
+    @Override
+    public boolean deleteAllMy(int id_customer) {
+        return repository.deleteAllMy(id_customer);
+    }
 }

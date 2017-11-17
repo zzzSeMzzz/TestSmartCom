@@ -1,9 +1,9 @@
 Ext.define('SC.store.SimpleBasketStore', {
     extend: 'Ext.data.Store',
     model: 'SC.model.SimpleBasket',
-    autoLoad: true,
+    autoLoad: false,
     pageSize: 35,
-    autoLoad: {start: 0, limit: 35},
+   // autoLoad: {start: 0, limit: 35},
 
     proxy: {
         type: 'ajax',

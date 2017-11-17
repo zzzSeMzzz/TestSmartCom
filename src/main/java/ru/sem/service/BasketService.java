@@ -19,4 +19,6 @@ public interface BasketService {
     BasketItem addItemToCustomer(int customer_id, int item_id);
 
     boolean delete(int id);
+
+    boolean deleteAllMy(int id_customer);
 }

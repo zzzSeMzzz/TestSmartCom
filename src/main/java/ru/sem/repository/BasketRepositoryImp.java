@@ -62,4 +62,10 @@ public class BasketRepositoryImp implements BasketRepository {
     public boolean delete(int id) {
         return em.createNamedQuery(BasketItem.DELETE).setParameter("id", id).executeUpdate() != 0;
     }
+
+    @Override
+    public boolean deleteAllMy(int customer_id) {
+        return em.createNamedQuery(BasketItem.DELETE_ALL_MY)
+                .setParameter("id_customer", customer_id).executeUpdate() != 0;
+    }
 }
